@@ -1,19 +1,25 @@
 #include "Bitmap.h"
 #include "Processing.h"
-
+#include <iostream>
 
 int main()
 {
-	Bitmap bmp;
+    Bitmap bmp;
 
-	bmp.load("ffVII.bmp");
+    bmp.load("C:\\Users\\guill\\source\\repos\\qsfdqsdc\\ffVII.bmp");
+ 
+    //processing::convertToGrey(bmp.getImage()); 
+    ////processing::convertToBinary(bmp.getImage());
 
-	auto image = bmp.getImage();
+    //bmp.save("C:\\Users\\guill\\source\\repos\\qsfdqsdc\\imageBiS.bmp");
 
-	processing::convertToGrey(image);
-	processing::convertToBinary(image);
 
-	bmp.save("ffviiBiS.bmp");
+    //bmp.load("C:\\Users\\guill\\source\\repos\\qsfdqsdc\\imageBiS.bmp");
 
-	return 0;
+    processing::medianFilter(bmp.getImage(), 3);
+
+    bmp.save("C:\\Users\\guill\\source\\repos\\qsfdqsdc\\ffviiBiS2.bmp");
+
+
+    return 0;
 }
