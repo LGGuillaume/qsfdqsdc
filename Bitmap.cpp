@@ -79,7 +79,7 @@ bool Bitmap::save(const std::string& filename)
 		for (int col = 0; col < getWidth(); ++col)
 			file.write(reinterpret_cast<const char*>(&m_image.getPixel(row, col).channels[0]), 3);
 
-		file.write("\0\0\0", paddingAmount); // Write padding bytes
+		file.write("\0\0\0", paddingAmount);
 	}
 
 	file.close();
