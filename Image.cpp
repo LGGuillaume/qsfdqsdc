@@ -33,6 +33,19 @@ Rgb& Image::getPixel(const int& row, const int& col)
 	return m_data[row * m_width + col];
 }
 
+const Rgb& Image::getPixel(const int& row, const int& col) const
+{
+	if (row >= m_height || col >= m_width)
+		std::cerr << "out of range";
+
+	return m_data[row * m_width + col];
+}
+
+void Image::setPixel(const int& row, const int& col, const Rgb& color)
+{
+	m_data[row * m_width + col] = color;
+}
+
 int Image::getWidth() const
 {
 	return m_width;
@@ -51,4 +64,32 @@ size_t Image::getSize() const
 Rgb& Image::operator[](const size_t& index)
 {
 	return m_data[index];
+}
+
+bool Image::isInside(const int& row, const int& col) const
+{
+	if (row >= m_height || col >= m_width || row < 0 || col < 0)
+		return false;
+
+	return true;
+}
+
+Point operator-(const Point& op1, const Point& op2)
+{
+	return Point(op1.x - op2.x, op1.y - op2.y);
+}
+
+Point operator+(const Point& op1, const Point& op2)
+{
+	return Point(op1.x + op2.x, op1.y + op2.y);
+}
+
+Point operator/(const Point& op1, float op2)
+{
+	return Point(op1.x / op2, op1.y / op2);
+}
+
+Point operator*(const Point& op1, float op2)
+{
+	return Point(op1.x * op2, op1.y * op2);
 }
